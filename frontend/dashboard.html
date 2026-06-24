@@ -1,385 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cloud Storage Dashboard</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-}
-
-body{
-    display:flex;
-    min-height:100vh;
-    background:linear-gradient(135deg,#667eea,#764ba2);
-}
-
-/* Sidebar */
-
-.sidebar{
-    width:260px;
-    background:rgba(255,255,255,0.1);
-    backdrop-filter:blur(15px);
-    color:white;
-    padding:25px;
-}
-
-.sidebar h2{
-    margin-bottom:30px;
-}
-
-.sidebar ul{
-    list-style:none;
-}
-
-.sidebar li{
-    padding:15px;
-    margin-bottom:10px;
-    cursor:pointer;
-    border-radius:12px;
-    transition:0.3s;
-}
-
-.sidebar li:hover{
-    background:rgba(255,255,255,0.2);
-}
-
-/* Main */
-
-.main{
-    flex:1;
-    padding:30px;
-}
-
-/* Glass Cards */
-
-.card{
-    background:rgba(255,255,255,0.15);
-    backdrop-filter:blur(15px);
-    border-radius:20px;
-    padding:20px;
-    color:white;
-    margin-bottom:20px;
-    box-shadow:0 8px 32px rgba(0,0,0,0.1);
-}
-
-.cards{
-    display:flex;
-    gap:20px;
-    flex-wrap:wrap;
-}
-
-.small-card{
-    flex:1;
-    min-width:220px;
-}
-
-/* Table */
-
-table{
-    width:100%;
-    border-collapse:collapse;
-    color:white;
-}
-
-th,td{
-    padding:15px;
-    text-align:left;
-}
-
-tr{
-    border-bottom:1px solid rgba(255,255,255,0.2);
-}
-
-/* Buttons */
-
-button{
-    padding:10px 15px;
-    border:none;
-    border-radius:10px;
-    cursor:pointer;
-    margin:5px;
-    background:#00d4ff;
-    color:white;
-}
-
-button:hover{
-    opacity:0.9;
-}
-
-input{
-    padding:12px;
-    border:none;
-    border-radius:10px;
-    width:100%;
-    margin:10px 0;
-}
-
-/* Sections */
-
-.section{
-    display:none;
-}
-
-#dashboard{
-    display:block;
-}
-
-/* Progress */
-
-.progress-container{
-    background:white;
-    border-radius:20px;
-    overflow:hidden;
-}
-
-.progress-bar{
-    width:65%;
-    height:20px;
-    background:#00ff9d;
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Storage Dashboard</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<!-- Sidebar -->
+<div class="container">
 
-<div class="sidebar">
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <h2>☁ Cloud Storage</h2>
+        </div>
 
-    <h2>☁ Cloud Storage</h2>
+        <ul class="nav-links">
+            <li><a href="dashboard.html" class="active">Dashboard</a></li>
+            <li><a href="upload.html">Upload File</a></li>
+            <li><a href="myfiles.html">My Files</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="#">Logout</a></li>
+        </ul>
+    </nav>
 
-    <ul>
-        <li onclick="showSection('dashboard')">🏠 Dashboard</li>
-        <li onclick="showSection('files')">📁 My Files</li>
-        <li onclick="showSection('upload')">⬆ Upload File</li>
-        <li onclick="showSection('analytics')">📈 Analytics</li>
-        <li onclick="showSection('profile')">👤 Profile</li>
-    </ul>
+    <!-- Welcome Section -->
+    <section class="welcome-section glass-panel">
+        <h1>Welcome Back 👋</h1>
+        <p>Manage and monitor your cloud files efficiently.</p>
+    </section>
 
-</div>
+    <!-- Dashboard Cards -->
+    <section class="dashboard">
 
-<!-- Main Content -->
+        <div class="glass-card files">
+            <h3>📁 Total Files</h3>
+            <p>25</p>
+        </div>
 
-<div class="main">
+        <div class="glass-card storage">
+            <h3>💾 Storage Used</h3>
+            <p>1.8 GB</p>
+        </div>
 
-<!-- Dashboard -->
+        <div class="glass-card shared">
+            <h3>🔗 Shared Files</h3>
+            <p>8</p>
+        </div>
 
-<div id="dashboard" class="section">
+        <div class="glass-card downloads">
+            <h3>⬇ Downloads</h3>
+            <p>40</p>
+        </div>
 
-<h1 style="color:white;margin-bottom:20px;">
-Dashboard
-</h1>
+    </section>
 
-<div class="cards">
+    <!-- Recent Activity -->
+    <section class="glass-panel">
+        <h2>📊 Recent Activity</h2>
 
-<div class="card small-card">
-<h3>Total Files</h3>
-<h1>124</h1>
-</div>
+        <table>
+            <tr>
+                <th>File Name</th>
+                <th>Date</th>
+                <th>Status</th>
+            </tr>
 
-<div class="card small-card">
-<h3>Storage Used</h3>
-<h1>2.5 GB</h1>
-</div>
+            <tr>
+                <td>Resume.pdf</td>
+                <td>23-Jun-2026</td>
+                <td>Uploaded</td>
+            </tr>
 
-<div class="card small-card">
-<h3>Shared Files</h3>
-<h1>18</h1>
-</div>
+            <tr>
+                <td>Project.docx</td>
+                <td>22-Jun-2026</td>
+                <td>Downloaded</td>
+            </tr>
 
-</div>
-
-<div class="card">
-
-<h3>Storage Usage</h3>
-<br>
-
-<div class="progress-container">
-<div class="progress-bar"></div>
-</div>
-
-<br>
-
-<p>65% Storage Used</p>
-
-</div>
-
-<div class="card">
-
-<h3>Recent Activity</h3>
-
-<br>
-
-<p>📄 Uploaded Resume.pdf</p>
-<p>📦 Uploaded Project.zip</p>
-<p>🗑 Deleted Notes.pdf</p>
-
-</div>
-
-</div>
-
-<!-- My Files -->
-
-<div id="files" class="section">
-
-<div class="card">
-
-<h2>📁 My Files</h2>
-
-<br>
-
-<input type="text" placeholder="Search Files">
-
-<table>
-
-<tr>
-<th>File</th>
-<th>Size</th>
-<th>Action</th>
-</tr>
-
-<tr>
-<td>📄 Resume.pdf</td>
-<td>2 MB</td>
-<td>
-<button>Download</button>
-<button>Delete</button>
-</td>
-</tr>
-
-<tr>
-<td>🖼 Photo.jpg</td>
-<td>5 MB</td>
-<td>
-<button>Download</button>
-<button>Delete</button>
-</td>
-</tr>
-
-<tr>
-<td>📦 Project.zip</td>
-<td>50 MB</td>
-<td>
-<button>Download</button>
-<button>Delete</button>
-</td>
-</tr>
-
-</table>
+            <tr>
+                <td>Report.pdf</td>
+                <td>21-Jun-2026</td>
+                <td>Shared</td>
+            </tr>
+        </table>
+    </section>
 
 </div>
-
-</div>
-
-<!-- Upload -->
-
-<div id="upload" class="section">
-
-<div class="card">
-    <h1>Dashboard</h1>
-
-<p>Welcome User</p>
-
-<a href="#">
-Upload File
-</a>
-
-<h2>⬆ Upload File</h2>
-
-<br>
-
-<input type="file">
-
-<button>Upload File</button>
-
-</div>
-
-</div>
-
-<!-- Analytics -->
-
-<div id="analytics" class="section">
-
-<div class="card">
-
-<h2>📈 Analytics</h2>
-
-<br>
-
-<p>Daily Uploads : 35</p>
-<p>Downloads : 78</p>
-<p>Storage Growth : +15%</p>
-
-</div>
-
-<div class="card">
-
-<h3>Monthly Usage</h3>
-
-<br>
-
-<p>January ▓▓▓▓</p>
-<p>February ▓▓▓▓▓▓</p>
-<p>March ▓▓▓▓▓▓▓▓</p>
-
-</div>
-
-</div>
-
-<!-- Profile -->
-
-<div id="profile" class="section">
-
-<div class="card">
-
-<h2>👤 Profile</h2>
-
-<br>
-
-<img src="https://via.placeholder.com/120"
-style="border-radius:50%;">
-
-<br><br>
-
-<p><b>Name:</b> Viknaya</p>
-<p><b>Email:</b> user@gmail.com</p>
-<p><b>Role:</b> Cloud Storage User</p>
-
-<br>
-
-<button>Edit Profile</button>
-
-</div>
-
-</div>
-
-</div>
-
-<script>
-
-function showSection(id){
-
-let sections=document.querySelectorAll('.section');
-
-sections.forEach(section=>{
-section.style.display='none';
-});
-
-document.getElementById(id).style.display='block';
-
-}
-
-</script>
 
 </body>
 </html>
