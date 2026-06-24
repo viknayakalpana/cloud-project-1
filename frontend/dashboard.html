@@ -1,148 +1,378 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Dashboard</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cloud Storage Dashboard</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
+
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Poppins;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
 }
 
 body{
-display:flex;
-background:#f4f7fc;
+    display:flex;
+    min-height:100vh;
+    background:linear-gradient(135deg,#667eea,#764ba2);
 }
 
+/* Sidebar */
+
 .sidebar{
-width:250px;
-height:100vh;
-background:#1f2937;
-color:white;
-padding:20px;
+    width:260px;
+    background:rgba(255,255,255,0.1);
+    backdrop-filter:blur(15px);
+    color:white;
+    padding:25px;
 }
 
 .sidebar h2{
-margin-bottom:20px;
+    margin-bottom:30px;
 }
 
 .sidebar ul{
-list-style:none;
+    list-style:none;
 }
 
 .sidebar li{
-padding:15px;
-cursor:pointer;
+    padding:15px;
+    margin-bottom:10px;
+    cursor:pointer;
+    border-radius:12px;
+    transition:0.3s;
 }
 
 .sidebar li:hover{
-background:#374151;
-border-radius:10px;
+    background:rgba(255,255,255,0.2);
 }
 
+/* Main */
+
 .main{
-flex:1;
-padding:30px;
+    flex:1;
+    padding:30px;
+}
+
+/* Glass Cards */
+
+.card{
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(15px);
+    border-radius:20px;
+    padding:20px;
+    color:white;
+    margin-bottom:20px;
+    box-shadow:0 8px 32px rgba(0,0,0,0.1);
 }
 
 .cards{
-display:flex;
-gap:20px;
-margin-bottom:30px;
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
 }
 
-.card{
-background:white;
-padding:20px;
-flex:1;
-border-radius:15px;
-box-shadow:0 4px 15px rgba(0,0,0,0.1);
+.small-card{
+    flex:1;
+    min-width:220px;
 }
+
+/* Table */
 
 table{
-width:100%;
-background:white;
-border-collapse:collapse;
-border-radius:10px;
-overflow:hidden;
+    width:100%;
+    border-collapse:collapse;
+    color:white;
 }
 
 th,td{
-padding:15px;
-border-bottom:1px solid #ddd;
+    padding:15px;
+    text-align:left;
 }
+
+tr{
+    border-bottom:1px solid rgba(255,255,255,0.2);
+}
+
+/* Buttons */
+
+button{
+    padding:10px 15px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    margin:5px;
+    background:#00d4ff;
+    color:white;
+}
+
+button:hover{
+    opacity:0.9;
+}
+
+input{
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    width:100%;
+    margin:10px 0;
+}
+
+/* Sections */
+
+.section{
+    display:none;
+}
+
+#dashboard{
+    display:block;
+}
+
+/* Progress */
+
+.progress-container{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    width:65%;
+    height:20px;
+    background:#00ff9d;
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="sidebar">
-<h2>Cloud Storage</h2>
+<!-- Sidebar -->
 
-<ul>
-<li>🏠 Dashboard</li>
-<li>📁 My Files</li>
-<li>⬆ Upload File</li>
-<li>📤 Shared Files</li>
-<li>📈 Analytics</li>
-<li>⚙ Settings</li>
-<li>🚪 Logout</li>
-</ul>
+<div class="sidebar">
+
+    <h2>☁ Cloud Storage</h2>
+
+    <ul>
+        <li onclick="showSection('dashboard')">🏠 Dashboard</li>
+        <li onclick="showSection('files')">📁 My Files</li>
+        <li onclick="showSection('upload')">⬆ Upload File</li>
+        <li onclick="showSection('analytics')">📈 Analytics</li>
+        <li onclick="showSection('profile')">👤 Profile</li>
+    </ul>
+
 </div>
+
+<!-- Main Content -->
 
 <div class="main">
 
-<h1>Dashboard</h1>
+<!-- Dashboard -->
+
+<div id="dashboard" class="section">
+
+<h1 style="color:white;margin-bottom:20px;">
+Dashboard
+</h1>
 
 <div class="cards">
 
-<div class="card">
+<div class="card small-card">
 <h3>Total Files</h3>
-<h2>124</h2>
+<h1>124</h1>
 </div>
 
-<div class="card">
+<div class="card small-card">
 <h3>Storage Used</h3>
-<h2>2.5 GB</h2>
+<h1>2.5 GB</h1>
+</div>
+
+<div class="card small-card">
+<h3>Shared Files</h3>
+<h1>18</h1>
+</div>
+
 </div>
 
 <div class="card">
-<h3>Shared Files</h3>
-<h2>18</h2>
+
+<h3>Storage Usage</h3>
+<br>
+
+<div class="progress-container">
+<div class="progress-bar"></div>
+</div>
+
+<br>
+
+<p>65% Storage Used</p>
+
+</div>
+
+<div class="card">
+
+<h3>Recent Activity</h3>
+
+<br>
+
+<p>📄 Uploaded Resume.pdf</p>
+<p>📦 Uploaded Project.zip</p>
+<p>🗑 Deleted Notes.pdf</p>
+
 </div>
 
 </div>
+
+<!-- My Files -->
+
+<div id="files" class="section">
+
+<div class="card">
+
+<h2>📁 My Files</h2>
+
+<br>
+
+<input type="text" placeholder="Search Files">
 
 <table>
 
 <tr>
-<th>File Name</th>
+<th>File</th>
 <th>Size</th>
-<th>Date</th>
 <th>Action</th>
 </tr>
 
 <tr>
-<td>Resume.pdf</td>
+<td>📄 Resume.pdf</td>
 <td>2 MB</td>
-<td>23-06-2026</td>
-<td>Download</td>
+<td>
+<button>Download</button>
+<button>Delete</button>
+</td>
 </tr>
 
 <tr>
-<td>Project.zip</td>
+<td>🖼 Photo.jpg</td>
+<td>5 MB</td>
+<td>
+<button>Download</button>
+<button>Delete</button>
+</td>
+</tr>
+
+<tr>
+<td>📦 Project.zip</td>
 <td>50 MB</td>
-<td>23-06-2026</td>
-<td>Delete</td>
+<td>
+<button>Download</button>
+<button>Delete</button>
+</td>
 </tr>
 
 </table>
 
 </div>
+
+</div>
+
+<!-- Upload -->
+
+<div id="upload" class="section">
+
+<div class="card">
+
+<h2>⬆ Upload File</h2>
+
+<br>
+
+<input type="file">
+
+<button>Upload File</button>
+
+</div>
+
+</div>
+
+<!-- Analytics -->
+
+<div id="analytics" class="section">
+
+<div class="card">
+
+<h2>📈 Analytics</h2>
+
+<br>
+
+<p>Daily Uploads : 35</p>
+<p>Downloads : 78</p>
+<p>Storage Growth : +15%</p>
+
+</div>
+
+<div class="card">
+
+<h3>Monthly Usage</h3>
+
+<br>
+
+<p>January ▓▓▓▓</p>
+<p>February ▓▓▓▓▓▓</p>
+<p>March ▓▓▓▓▓▓▓▓</p>
+
+</div>
+
+</div>
+
+<!-- Profile -->
+
+<div id="profile" class="section">
+
+<div class="card">
+
+<h2>👤 Profile</h2>
+
+<br>
+
+<img src="https://via.placeholder.com/120"
+style="border-radius:50%;">
+
+<br><br>
+
+<p><b>Name:</b> Viknaya</p>
+<p><b>Email:</b> user@gmail.com</p>
+<p><b>Role:</b> Cloud Storage User</p>
+
+<br>
+
+<button>Edit Profile</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function showSection(id){
+
+let sections=document.querySelectorAll('.section');
+
+sections.forEach(section=>{
+section.style.display='none';
+});
+
+document.getElementById(id).style.display='block';
+
+}
+
+</script>
 
 </body>
 </html>
